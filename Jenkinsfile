@@ -12,6 +12,11 @@ pipeline{
     }
   }
 
+  stage('CI'){
+        steps {
+          echo 'CI'
+        }
+      }
+    }
+
 }
-//
-//
