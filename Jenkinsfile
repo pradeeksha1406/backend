@@ -27,7 +27,7 @@ pipeline{
 
     stage('Release'){
      when {
-             expression { env.TAG_NAME ==~ env.BRANCH_NAME }
+             expression { env.TAG_NAME ==~ ".*"}
      }
       steps {
       sh 'docker build -t 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:${TAG_NAME} .'
