@@ -13,11 +13,11 @@ pipeline{
 
     stage('Code Quality'){
       when {
-      expression {env.GIT_BRANCH == "origin/main"}
-//          allOf {
-//             branch 'main'
-//              expression { env.TAG_NAME != env.GIT_BRANCH }
-//          }
+        allOf {
+            branch 'main'
+             expression {env.GIT_BRANCH == "origin/main"}
+             expression { env.TAG_NAME != env.GIT_BRANCH }
+        }
      }
       steps {
         sh 'sonar-scanner -Dsonar.host.url=http://sonarqube.techadda.co:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectKey=backend -Dsonar.qualitygate.wait=true'
@@ -28,7 +28,7 @@ pipeline{
     stage('Unit Tests'){
       when {
          allOf {
-           branch 'main'
+           expression {env.GIT_BRANCH == "origin/main"}
          }
       }
        steps {
