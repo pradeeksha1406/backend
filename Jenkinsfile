@@ -43,12 +43,12 @@ pipeline{
      }
 
       steps {
-      sh 'zip -r backend-${TAG_NAME}.zip node_modules schema DbConfig.js index.js package.json TransactionService.js'
-      sh 'curl -sSf -u "admin:Admin@123" -X PUT -T backend-${TAG_NAME}.zip "http://artifactory.techadda.co:8082/artifactory/backend/backend-${TAG_NAME}.zip"'
+//       sh 'zip -r backend-${TAG_NAME}.zip node_modules schema DbConfig.js index.js package.json TransactionService.js'
+//       sh 'curl -sSf -u "admin:Admin@123" -X PUT -T backend-${TAG_NAME}.zip "http://artifactory.techadda.co:8082/artifactory/backend/backend-${TAG_NAME}.zip"'
 //       echo 'CI'
-//        sh 'docker build -t 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:${TAG_NAME} .'
-//        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 851725420695.dkr.ecr.us-east-1.amazonaws.com'
-//        sh 'docker push 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:${TAG_NAME}'
+       sh 'docker build -t 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:${TAG_NAME} .'
+       sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 851725420695.dkr.ecr.us-east-1.amazonaws.com'
+       sh 'docker push 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:${TAG_NAME}'
       }
     }
   }
